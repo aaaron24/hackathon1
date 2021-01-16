@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>Register</title>
+    <style>
+        html, body{
+            height: 100%;
+            width: 99.1%;
+            background: #dfe6e9;
+            font-family: 'Poppins', sans-serif;
+        }
+        .form{
+            width: 40%;
+            margin: auto;
+            padding: 16px;
+            margin-top: 15px;
+            background: white;
+            border-radius: 5px;
+        }
+        .form2{
+            width: 40%;
+            margin: auto;
+            padding: 16px;
+            margin-top: 15px;
+            background: white;
+            border-radius: 5px;
+        }
+
+        input{
+            width: 90%;
+            display: block;
+            margin: auto;
+            margin-top: 25px;
+            margin-bottom: 16px;
+            padding: 10px;
+            padding-left: 15px;
+            border: 0.5px solid #00b894;
+        }
+        button{
+            width: 95%;
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 16px;
+            padding: 20px;
+            color: white;
+            background: #00b894;
+            border: none;
+        }
+        h3{
+            padding: 16px;
+            text-align: center;
+            border-bottom: 1px solid #00b894;
+            margin: 16px;
+            margin-bottom: 20px;
+            color: #00b894;
+        }
+        h6{
+            margin: 16px;
+        }
+        a{
+            color: #00b894;
+            opacity: 0.75;
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: underline;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+<script>
+</script>
+<div class = "form">
+    <form action = "#" th:action="@{/register}" method = "POST">
+        <h3>REGISTER</h3>
+        <input type="text"  name = "username" placeholder="Username">
+        <input type = "email" name = "email" placeholder="Email">
+        <input type="text" name = "firstName" placeholder="First Name">
+        <input type="text" name = "lastName" placeholder="Last Name">
+        <input id = "pass1" name = "password" type="password" placeholder="Password">
+        <input id = "pass2" type="password" placeholder="Re-type Password">
+        <button type = "submit">REGISTER</button>
+    </form>
+</div>
+<div class = "form2">
+    <div th:if="${registerSuccess}">
+        <p>Success! You may <a th:href = "@{/login}">Login</a></p>
+    </div>
+    <div th:if="${registerError}">
+        <p th:text = "${registerError}"></p>
+    </div>
+</div>
+</body>
+</html>
