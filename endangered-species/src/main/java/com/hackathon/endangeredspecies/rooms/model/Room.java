@@ -5,15 +5,17 @@ public class Room {
     private int id;
     private String roomName;
     private String roomCreator;
+    private String animal;
 
     public Room(){
 
     }
 
-    public Room(int id, String roomName, String roomCreator){
+    public Room(int id, String roomName, String roomCreator, String animal){
         this.id = id;
         this.roomName = roomName;
         this.roomCreator = roomCreator;
+        this.animal = animal;
     }
 
     public int getId() {
@@ -39,5 +41,12 @@ public class Room {
     public void setRoomCreator(String roomCreator) {
         this.roomCreator = roomCreator;
     }
-    
+
+    public String getAnimal() {
+        return animal;
+    }
+
+    public void setAnimal(String animal) {
+        this.animal = animal;
+    }
 }
