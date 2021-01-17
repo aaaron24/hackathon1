@@ -2,8 +2,8 @@ package com.hackathon.endangeredspecies.rooms.request;
 
 public class CreateRoom {
 
-    private String roomName;
-    private String animal;
+    public String roomName;
+    public String animal;
 
     public CreateRoom(String roomName, String animal){
         this.roomName = roomName;

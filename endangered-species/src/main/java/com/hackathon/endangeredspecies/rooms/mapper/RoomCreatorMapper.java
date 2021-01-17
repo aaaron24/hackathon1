@@ -16,7 +16,7 @@ public interface RoomCreatorMapper {
     @Select("SELECT MAX (id) FROM ROOMCREATORS")
     Integer getMaxRoomCreator();
 
-    @Insert("INSERT INTO ROOMCREATORS (id, user_id, user_id) VALUES (#{id}, #{user_id}, #{user_id})")
+    @Insert("INSERT INTO ROOMCREATORS (id, user_id, room_id) VALUES (#{id}, #{user_id}, #{room_id})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insertRoomCreator(RoomCreator roomCreator);
 

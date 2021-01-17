@@ -13,10 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,11 +34,18 @@ public class RoomController {
         this.userMapper = userMapper;
     }
 
+    @GetMapping("/createRoom")
+    public String getCreateRoom(@ModelAttribute("createdRoom") CreateRoom createRoom, Model model){
+        return "home";
+    }
+
     @PostMapping("/createRoom")
-    public String createRoom(Model model, @ModelAttribute CreateRoom createdRoom){
-        if(this.roomMapper.selectRoomByName(createdRoom.getRoomName())==null){
+    public String createRoom( @RequestParam(value = "roomName", required = false) String roomName,
+                              @RequestParam(value = "animal", required = false) String animal,
+                              Model model){
+        CreateRoom createRoom = new CreateRoom(roomName, animal);
+        if(this.roomMapper.selectRoomByName(createRoom.getRoomName())==null){
             System.out.println("Could not create room");
-            return "chat";
         }
         Room room = new Room();
         int maxId = 0;
@@ -52,8 +56,8 @@ public class RoomController {
         room.setId(maxId);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         room.setRoomCreator(authentication.getName());
-        room.setRoomName(createdRoom.getRoomName());
-        room.setAnimal(createdRoom.getAnimal());
+        room.setRoomName(createRoom.getRoomName());
+        room.setAnimal(createRoom.getAnimal());
         int maxRCId = 0;
         if(roomCreatorMapper.getMaxRoomCreator()!=null){
             maxRCId = roomCreatorMapper.getMaxRoomCreator();
