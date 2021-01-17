@@ -1,0 +1,7 @@
+.post-container img {
+    border-bottom: 1px solid lightgray;
+}
+
+.post-container {
+    margin: 5px;
+}
