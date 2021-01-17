@@ -11,18 +11,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class RoomController {
 
     @PostMapping("/createRoom")
-    public String createRoom(Model model, @ModelAttribute Room room){
+    public String createRoom(Model model, @ModelAttribute Room room) {
 
         return "home";
     }
 
     @GetMapping("/getRooms")
-    public String returnRooms(){
+    public String returnRooms() {
 
         return "home";
     }
-
-    @GetMapping("/getRoom")
-    public
 
 }
