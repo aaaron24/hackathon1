@@ -1,5 +1,5 @@
 package com.hackathon.endangeredspecies.auth.controller;
-;
+
 import com.hackathon.endangeredspecies.auth.model.User;
 import com.hackathon.endangeredspecies.auth.service.UserService;
 import org.springframework.stereotype.Controller;
