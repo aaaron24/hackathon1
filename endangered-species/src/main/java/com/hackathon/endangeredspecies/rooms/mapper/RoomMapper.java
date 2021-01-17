@@ -1,10 +1,13 @@
 package com.hackathon.endangeredspecies.rooms.mapper;
 import com.hackathon.endangeredspecies.auth.model.User;
 import com.hackathon.endangeredspecies.rooms.model.Room;
+
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +35,13 @@ public interface RoomMapper {
      
     @Select("SELECT * FROM ROOMS WHERE roomCreator = #{roomCreator}")
     List<Room> roomsCreated(String roomCreator);
+    
+    @Delete("DELETE FROM ROOMS WHERE roomName = #{roomName}")
+    void deleteRoom(String roomName);
 
-
+    @Update("UPDATE ROOMS SET roomName = #{newRoomName}, animal = #{newAnimal} WHERE id = #{id}")
+    void editRoom(int id, String newRoomName, String newAnimal);
+    
     @Insert("INSERT INTO ROOMS (id, roomName, roomCreator, animal, money) VALUES (#{id}, #{roomName}, #{roomCreator}, #{animal}, #{money})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insertRoom(Room room);

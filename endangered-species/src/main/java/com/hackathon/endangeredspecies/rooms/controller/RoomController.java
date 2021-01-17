@@ -69,8 +69,11 @@ public class RoomController {
         RoomCreator roomCreator = new RoomCreator(maxRCId, userId, maxId);
         roomCreatorMapper.insertRoomCreator(roomCreator);
         roomMapper.insertRoom(room);
-        return "home";
+        return "redirect:/your-rooms";
     }
+    
+    
+    
 
     @PostMapping("/joinRoom")
     public String joinRoom(Model model, @RequestParam(value = "roomId", required = false) Integer roomId){
@@ -92,7 +95,7 @@ public class RoomController {
             if((name.equals(keyword1) || name.contains(keyword1))){
                 matches.add(roomNames.get(i));
             }
-        }
+        } 
         for(int j = 0; j<animals.size(); j++){
             String name = animals.get(j).toLowerCase();
             if((name.equals(keyword1) || name.contains(keyword1))){
