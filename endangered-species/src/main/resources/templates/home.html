@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+      #search-results{
+        width: 200px;
+        background: white;
+        color: black;
+        border: 1px solid black;
+      }
+    </style>
   </head>
   <body>
 
@@ -57,7 +65,11 @@
                  <button type="submit" class="btn btn-default">Submit</button>
                </form>
               </div>
-
+              <div th:each = "searchResult : ${searchResults}" id = "search-results">
+                <a th:href = "@{'/room?roomId='+${searchResult.id}}"><span class="result" th:text = "${searchResult.roomName}"></span></a>
+                <span> - </span>
+                <span class="name" th:text = "${searchResult.roomCreator}"></span>
+              </div>
             </div>
           </div>
         </nav>

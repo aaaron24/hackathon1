@@ -34,11 +34,6 @@ public class RoomController {
         this.userMapper = userMapper;
     }
 
-    @GetMapping("/createRoom")
-    public String getCreateRoom(@ModelAttribute("createdRoom") CreateRoom createRoom, Model model){
-        return "home";
-    }
-
     @PostMapping("/createRoom")
     public String createRoom( @RequestParam(value = "roomName", required = false) String roomName,
                               @RequestParam(value = "animal", required = false) String animal,
@@ -89,6 +84,7 @@ public class RoomController {
         List<String> roomNames = this.roomMapper.selectRoomNames();
         List<String> animals = this.roomMapper.selectRoomAnimals();
         ArrayList<String> matches = new ArrayList<>();
+        ArrayList<String> matchesAnimal = new ArrayList<>();
         String keyword1 = keyword.toLowerCase();
         for(int i = 0; i<roomNames.size(); i++){
             String name = roomNames.get(i).toLowerCase();
@@ -99,10 +95,21 @@ public class RoomController {
         for(int j = 0; j<animals.size(); j++){
             String name = animals.get(j).toLowerCase();
             if((name.equals(keyword1) || name.contains(keyword1))){
-                matches.add(animals.get(j));
+                matchesAnimal.add(animals.get(j));
             }
         }
-        return "chat";
+        ArrayList<Room> rooms = new ArrayList<>();
+        for(int i = 0; i<matches.size(); i++){
+            Room room = this.roomMapper.selectRoomByName(matches.get(i));
+            rooms.add(room);
+        }
+        for(int j = 0; j<matchesAnimal.size(); j++){
+            Room room = this.roomMapper.selectRoomByAnimal(matchesAnimal.get(j));
+            rooms.add(room);
+        }
+        model.addAttribute("searchResults", rooms);
+        System.out.println(rooms.get(0));
+        return "home";
     }
 
     @GetMapping("/rooms")
@@ -111,14 +118,15 @@ public class RoomController {
         return "home";
     }
 
-    @GetMapping("/room/{roomId}")
-    public String returnRoom(@PathVariable int roomId, Model model){
+    @RequestMapping("/room")
+    public String returnRoom(@RequestParam int roomId, Model model){
         if(this.roomMapper.selectRoom(roomId) == null){
             System.out.println("Room Could Not Be Found");
             return "home";
         }
         Room room = this.roomMapper.selectRoom(roomId);
-        return "home";
+        model.addAttribute("roomName", room.getRoomName());
+        return "newRoom";
     }
 
 }

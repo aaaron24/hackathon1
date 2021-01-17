@@ -30,6 +30,9 @@ public interface RoomMapper {
     @Select("SELECT * FROM ROOMS WHERE roomName = #{roomName}")
     Room selectRoomByName(String roomName);
 
+    @Select("SELECT * FROM ROOMS WHERE animal = #{animal}")
+    Room selectRoomByAnimal(String animal);
+
     @Select("SELECT MAX (id) FROM ROOMS")
     Integer getMaxRoom();
      
