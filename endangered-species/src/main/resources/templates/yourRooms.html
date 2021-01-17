@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Rooms</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+        <nav class="navbar navbar-inverse" style = "width:100%; border-radius:none;">
+          <div class="container-fluid rounded-0">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Test</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li ><a href="/home">Home</a></li>
+              <li><a data-toggle="modal" data-target="#myModal">Create New Room</a></li>
+
+              <li class="active"><a   href="#">Your Rooms</a></li>
+            </ul>
+            <div id="myModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                 <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">New Room</h4>
+                  </div>
+                  <div class="modal-body">
+                    <form th:action = "@{/createRoom}" method = "POST" action="#">
+                      <div class="form-group">
+
+                        <input th:name = "roomName" type="text" placeholder="Enter Room Name" class = "form-control" >
+                      </div>
+                      <div class="form-group">
+
+                        <input th:name = "animal" type="text" placeholder="Enter Endangered Species" class = "form-control" >
+                      </div>
+                      <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="navbar-form navbar-left" style = " position: absolute; right:0;" >
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+                <button type="submit" class="btn btn-default">Submit</button>
+              </div>
+
+            </div>
+          </div>
+        </nav>
+        
+        
+  <div class = "container">
+  <h1 style = "margin-top:50px;">Your Rooms:</h1>
+  <table style = "margin-top:50px;"class = "table table-hover active table-responsive ">
+    <thead>
+    <tr>
+    <th>Name</th>
+    <th>Animal</th>
+    <th>Money raised</th>
+    
+    </tr>
+    </thead>	
+    <tbody>
+    	<tr th:each="room: ${list}">
+    	<td th:text= "${room.roomName}"></td>
+    	<td th:text= "${room.animal}"></td>
+    	<td th:text= "${room.money}"></td>
+    	<td><a type="button" th:href="@{'/delete-room?roomName='+${room.roomName}}" class = "btn btn-warning">Delete</a></td>
+    	<td><a type="button" th:href="@{'/edit-room?roomName='+${room.roomName}}" class = "btn btn-warning"   > Edit</a></td>
+
+    	
+    	</tr>
+    	
+    </tbody>
+    
+    </table>
+    
+   
+	<a href = "/home" ><button style = " border: 1px solid red; margin-top:30px; background-color:red;margin-bottom:50px;"type="button" class="btn btn-info btn-lg ">Back to Main Page</button></a>
+	
+  <!-- Modal -->
+  
+
+
+
+
+
+  </body>
+
+</html>

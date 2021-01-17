@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title th:text = "'Edit ' +${room.roomName}">Edit </title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+     
+     <style type="text/css">
+     body, html{
+        margin:0;
+        padding:0;
+      padding-bottom:50px;
+        box-sizing: border-box;
+        height:100%;
+        
+
+      }
+     
+     </style>
+  </head>
+  <body >
+    <div class="container">
+        <h1  style = "margin:50px;" th:text = "'Edit ' +${room.roomName}+':'"></h1>
+        <form th:action = "@{/editRoomData}"method = "post" style = "margin:50px; ">
+        <input type = "text" th:value = "${room.roomName}" name = "oldName" readonly style = "display:none;">
+          
+          <div class = "form-group">
+       		<label >Edit name:</label>
+          <input th:value="${room.roomName}" class = "form-control" type="text" name="roomName" ></div>
+          <div class = "form-group">
+         	<label>Edit animal:</label>
+          <input th:value= "${room.animal}" class = "form-control" type="text" name="animal" ></div>
+         
+      
+          
+          <button type="submit" class="btn btn-default">Submit</button>
+             <a href = "/your-rooms" type = "button" class="btn btn-default">Cancel</a>
+          </form>
+       
+          
+          
+        </div>
+        
+     
+    
+   
+  </body>
+</html>
