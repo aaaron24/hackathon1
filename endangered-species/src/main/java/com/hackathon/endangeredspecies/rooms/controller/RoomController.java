@@ -44,8 +44,9 @@ public class RoomController {
                               @RequestParam(value = "animal", required = false) String animal,
                               Model model){
         CreateRoom createRoom = new CreateRoom(roomName, animal);
-        if(this.roomMapper.selectRoomByName(createRoom.getRoomName())==null){
+        if(this.roomMapper.selectRoomByName(createRoom.getRoomName())!=null){
             System.out.println("Could not create room");
+            return "chat";
         }
         Room room = new Room();
         int maxId = 0;
@@ -71,7 +72,7 @@ public class RoomController {
     }
 
     @PostMapping("/joinRoom")
-    public String joinRoom(Model model, Integer roomId){
+    public String joinRoom(Model model, @RequestParam(value = "roomId", required = false) Integer roomId){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         int userId = this.userMapper.getUser(authentication.getName()).getUserId();
         int maxId = this.roomUserMapper.getMaxRoomUser();
@@ -80,7 +81,7 @@ public class RoomController {
     }
 
     @PostMapping("/searchRoom")
-    public String searchRoom(Model model, String keyword){
+    public String searchRoom(Model model, @RequestParam(value = "keyword", required = false) String keyword){
         List<String> roomNames = this.roomMapper.selectRoomNames();
         List<String> animals = this.roomMapper.selectRoomAnimals();
         ArrayList<String> matches = new ArrayList<>();
