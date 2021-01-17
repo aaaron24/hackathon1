@@ -12,7 +12,7 @@ public class Room {
 
     }
 
-    public Room(int id, String roomName, String roomCreator, String animal, int money){
+    public Room(int id, String roomName, int money, String roomCreator, String animal ){
         this.id = id;
         this.roomName = roomName;
         this.roomCreator = roomCreator;

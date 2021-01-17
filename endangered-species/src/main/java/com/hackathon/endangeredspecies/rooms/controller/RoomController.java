@@ -46,7 +46,7 @@ public class RoomController {
         CreateRoom createRoom = new CreateRoom(roomName, animal);
         if(this.roomMapper.selectRoomByName(createRoom.getRoomName())!=null){
             System.out.println("Could not create room");
-            return "chat";
+            return "yourRooms";
         }
         Room room = new Room();
         int maxId = 0;

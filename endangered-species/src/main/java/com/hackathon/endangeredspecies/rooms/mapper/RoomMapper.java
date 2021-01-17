@@ -29,7 +29,9 @@ public interface RoomMapper {
 
     @Select("SELECT MAX (id) FROM ROOMS")
     Integer getMaxRoom();
-
+     
+    @Select("SELECT * FROM ROOMS WHERE roomCreator = #{roomCreator}")
+    List<Room> roomsCreated(String roomCreator);
 
 
     @Insert("INSERT INTO ROOMS (id, roomName, roomCreator) VALUES (#{id}, #{roomName}, #{roomCreator})")
