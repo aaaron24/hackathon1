@@ -81,7 +81,7 @@ public class RoomController {
         List<String> animals = this.roomMapper.selectRoomAnimals();
         ArrayList<String> matches = new ArrayList<>();
         for(int i = 0; i<roomNames.size(); i++){
-            if((roomNames.get(i).equals(keyword) || roomNames.get(i).contains(keyword)){
+            if((roomNames.get(i).equals(keyword) || roomNames.get(i).contains(keyword))){
                 matches.add(roomNames.get(i));
             }
         }
