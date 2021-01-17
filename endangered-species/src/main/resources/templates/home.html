@@ -52,7 +52,7 @@
             </div>
             <div class="navbar-form navbar-left" style = " position: absolute; right:0;" >
               <div class="form-group">
-               <form>
+               <form th:action = "@{/search}" method = "POST">
                  <input th:name = "keyword" type="text" class="form-control" placeholder="Search">
                  <button type="submit" class="btn btn-default">Submit</button>
                </form>
