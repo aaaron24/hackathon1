@@ -31,11 +31,17 @@
                     <h4 class="modal-title">New Room</h4>
                   </div>
                   <div class="modal-body">
-                   <form th:action = "@{/createRoom}" method = "POST" action="#">
-                     <input th:name = "roomName">
-                     <input th:name = "animal">
-                     <input type="submit">
-                   </form>
+                    <form th:action = "@{/createRoom}" method = "POST" action="#">
+                      <div class="form-group">
+
+                        <input th:name = "roomName" type="text" placeholder="Enter Room Name" class = "form-control" >
+                      </div>
+                      <div class="form-group">
+
+                        <input th:name = "animal" type="text" placeholder="Enter Endangered Species" class = "form-control" >
+                      </div>
+                      <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -46,8 +52,10 @@
             </div>
             <div class="navbar-form navbar-left" style = " position: absolute; right:0;" >
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-                <button type="submit" class="btn btn-default">Submit</button>
+               <form>
+                 <input th:name = "keyword" type="text" class="form-control" placeholder="Search">
+                 <button type="submit" class="btn btn-default">Submit</button>
+               </form>
               </div>
 
             </div>
