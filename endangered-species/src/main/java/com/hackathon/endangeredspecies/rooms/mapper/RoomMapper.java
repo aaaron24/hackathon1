@@ -32,7 +32,7 @@ public interface RoomMapper {
 
 
 
-    @Insert("INSERT INTO ROOMS (id, roomName, roomCreator) VALUES (#{id}, #{roomName}, #{roomCreator})")
+    @Insert("INSERT INTO ROOMS (id, roomName, roomCreator, animal, money) VALUES (#{id}, #{roomName}, #{roomCreator}, #{animal}, #{money})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insertRoom(Room room);
 }

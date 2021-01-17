@@ -46,7 +46,7 @@ public class RoomController {
         CreateRoom createRoom = new CreateRoom(roomName, animal);
         if(this.roomMapper.selectRoomByName(createRoom.getRoomName())!=null){
             System.out.println("Could not create room");
-            return "chat";
+            return "home";
         }
         Room room = new Room();
         int maxId = 0;
@@ -59,6 +59,7 @@ public class RoomController {
         room.setRoomCreator(authentication.getName());
         room.setRoomName(createRoom.getRoomName());
         room.setAnimal(createRoom.getAnimal());
+        room.setMoney(0);
         int maxRCId = 0;
         if(roomCreatorMapper.getMaxRoomCreator()!=null){
             maxRCId = roomCreatorMapper.getMaxRoomCreator();
@@ -80,22 +81,25 @@ public class RoomController {
         return "home";
     }
 
-    @PostMapping("/searchRoom")
+    @PostMapping("/search")
     public String searchRoom(Model model, @RequestParam(value = "keyword", required = false) String keyword){
         List<String> roomNames = this.roomMapper.selectRoomNames();
         List<String> animals = this.roomMapper.selectRoomAnimals();
         ArrayList<String> matches = new ArrayList<>();
+        String keyword1 = keyword.toLowerCase();
         for(int i = 0; i<roomNames.size(); i++){
-            if((roomNames.get(i).equals(keyword) || roomNames.get(i).contains(keyword))){
+            String name = roomNames.get(i).toLowerCase();
+            if((name.equals(keyword1) || name.contains(keyword1))){
                 matches.add(roomNames.get(i));
             }
         }
         for(int j = 0; j<animals.size(); j++){
-            if((animals.get(j).equals(keyword) || animals.get(j).contains(keyword))){
+            String name = animals.get(j).toLowerCase();
+            if((name.equals(keyword1) || name.contains(keyword1))){
                 matches.add(animals.get(j));
             }
         }
-        return "home";
+        return "chat";
     }
 
     @GetMapping("/rooms")
