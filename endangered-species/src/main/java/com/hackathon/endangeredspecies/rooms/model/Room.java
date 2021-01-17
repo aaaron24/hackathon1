@@ -6,21 +6,30 @@ public class Room {
     private String roomName;
     private String roomCreator;
     private String animal;
+    private int money;
 
     public Room(){
 
     }
 
-    public Room(int id, String roomName, String roomCreator, String animal){
+    public Room(int id, String roomName, String roomCreator, String animal, int money){
         this.id = id;
         this.roomName = roomName;
         this.roomCreator = roomCreator;
         this.animal = animal;
+        this.money = money;
     }
 
     public int getId() {
         return id;
     }
+    public int getMoney(){
+        return this.money;
+    }
+    public void setMoney(int money){
+        this.money = money;
+    }
+
 
     public void setId(int id) {
         this.id = id;

@@ -30,6 +30,8 @@ public interface RoomMapper {
     @Select("SELECT MAX (id) FROM ROOMS")
     Integer getMaxRoom();
 
+
+
     @Insert("INSERT INTO ROOMS (id, roomName, roomCreator) VALUES (#{id}, #{roomName}, #{roomCreator})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insertRoom(Room room);
