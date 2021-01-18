@@ -32,11 +32,12 @@ public class ChatController {
 
     @RequestMapping("/chat")
     public String getChatPage(@RequestParam int roomId, ChatForm chatForm, Model model){
+
         if(this.roomMapper.selectRoom(roomId) == null){
             System.out.println("Room Could Not Be Found");
             return "home";
         }
-        System.out.println(22);
+
         Room room = this.roomMapper.selectRoom(roomId);
         model.addAttribute("roomName", room.getRoomName());
         model.addAttribute("chatMessages", this.messageService.getMessages());

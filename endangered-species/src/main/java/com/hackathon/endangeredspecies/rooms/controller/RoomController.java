@@ -131,4 +131,11 @@ public class RoomController {
         return "room";
     }
 
+    @RequestMapping("/newRoom")
+    public String newRoom(Model model){
+
+        return "newRoom";
+    }
+
+
 }

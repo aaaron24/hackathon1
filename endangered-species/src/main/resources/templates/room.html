@@ -83,51 +83,28 @@
 <div class = "container">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#" style="font-size:15px; display:flex; justify-content:center; align-items:center;">Navbar</a>
+        <a class="navbar-brand" href="#" style="font-size:15px; display:flex; justify-content:center; align-items:center;">Endangered Species</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item" style="margin-right: 30px !important;">
-                    <a class="nav-link active" style="font-size:15px;" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" style="font-size:15px;" aria-current="page" href="/home">Home</a>
+                </li>
+                <li class="nav-item" style="margin-right: 30px !important;">
+                    <a  style="font-size:15px;" class="nav-link" href="/newRoom" >
+                        Create Room
+                    </a>
                 </li>
                 <li class="nav-item">
-<!--                    <a style="font-size:15px;" class="nav-link" href="#">Link</a>-->
-<!--                    <a  style="font-size:15px;" class="nav-link" href="#" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
-<!--                        Launch demo modal-->
-<!--                    </a>-->
+                    <a class="nav-link"  style="margin-right: 30px !important;font-size:15px;"  th:href="@{/your-rooms}">Your Rooms</a>
+
                 </li>
-                <li><a data-toggle="modal" data-target="#myModal">Create New Room</a></li>
-                <div id="myModal" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
+                <li class = "nav-item">
+                    <a class = "nav-link"  style="font-size:15px;"  th:href="@{'/chat?roomId='+${roomId}}">Chat</a>
+                </li>
 
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">New Room</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form th:action = "@{/createRoom}" method = "POST" action="#">
-                                    <div class="form-group">
-
-                                        <input th:name = "roomName" type="text" placeholder="Enter Room Name" class = "form-control" >
-                                    </div>
-                                    <div class="form-group">
-
-                                        <input th:name = "animal" type="text" placeholder="Enter Endangered Species" class = "form-control" >
-                                    </div>
-                                    <button type="submit" class="btn btn-default">Submit</button>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
 
             </ul>
             <form class="d-flex">
@@ -137,14 +114,8 @@
         </div>
     </div>
 </nav>
-
-
-    <form method = "put">
-
-
-    </form>
 </div>
-<button></button>
+
 <post-feed th:attr="data-roomid=${roomId}"></post-feed>
 <!-- <post-element data-title="Post 1" data-image="https://yt3.ggpht.com/-oV5jRl-r4GA/AAAAAAAAAAI/AAAAAAAAAAA/MW_e0iGl0wc/s900-c-k-no/photo.jpg" data-description="mothafucka"></post-element> -->
 </body>
