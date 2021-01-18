@@ -22,6 +22,8 @@
     <div class="container-fluid rounded-0">
       <div class="navbar-header">
         <a class="navbar-brand" href="#" th:text = "${roomName}"></a>
+          <a th:href = "@{/logout}">Logout</a>
+          <a th:href = "@{'/chat?roomId='+${chatId}}">Chat</a>
       </div>
       <ul class="nav navbar-nav">
         <li class="active"><a href="/home">Home</a></li>
