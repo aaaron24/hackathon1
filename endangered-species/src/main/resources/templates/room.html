@@ -15,6 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="posts.css">
     <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
+
     <style>
       #search-results{
         width: 200px;
@@ -22,6 +23,26 @@
         color: black;
         border: 1px solid black;
       }
+      #hero{
+      background-image: url("https://s3-us-west-2.amazonaws.com/uw-s3-cdn/wp-content/uploads/sites/6/2017/11/04133712/waterfall.jpg");
+      background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  width:100%;
+  height:500px;
+  margin-bottom:30px;
+      }
+      .hero-text {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+         left: 50%;
+
+     transform: translate(-50%, -50%);
+    color: white;
+}
+
     </style>
 </head>
 <body>
@@ -80,7 +101,7 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--</nav>-->
-<div class = "container">
+<div class = "container" style="position:absolute; z-index:10; left:4.5%;opacity:0.8;">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#" style="font-size:15px; display:flex; justify-content:center; align-items:center;">Endangered Species</a>
@@ -107,16 +128,42 @@
 
 
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex" th:action = "@{/search}" method = "POST">
+                <input class="form-control me-2" th:name = "keyword" type="text" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
+            <div th:each = "searchResult : ${searchResults}" id = "search-results">
+                <a th:href = "@{'/room?roomId='+${searchResult.id}}"><span class="result" th:text = "${searchResult.roomName}"></span></a>
+                <span> - </span>
+                <span class="name" th:text = "${searchResult.roomCreator}"></span>
+            </div>
         </div>
     </div>
 </nav>
 </div>
+    <div id = "hero">
+        <div class="hero-text">
+            <h1 th:text = "${roomName}" style="font-size:100px;  text-shadow:
+   -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;opacity:0.8;"></h1>
+            <p th:text = "'Money raised:'+${roomMoney}" style="font-size:60px;  text-shadow:
+   -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;opacity:0.8;"></p>
 
-<post-feed th:attr="data-roomid=${roomId}"></post-feed>
+        </div>
+    </div>
+<div class = "container">
+    <h1 style="margin-bottom:20px;">Posts:</h1>
+
+    <post-feed th:attr="data-roomid=${roomId}"></post-feed>
+
+</div>
+
+
 <!-- <post-element data-title="Post 1" data-image="https://yt3.ggpht.com/-oV5jRl-r4GA/AAAAAAAAAAI/AAAAAAAAAAA/MW_e0iGl0wc/s900-c-k-no/photo.jpg" data-description="mothafucka"></post-element> -->
 </body>
 </html>
