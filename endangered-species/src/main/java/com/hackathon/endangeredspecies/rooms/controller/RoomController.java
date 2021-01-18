@@ -133,7 +133,10 @@ public class RoomController {
             return "home";
         }
         Room room = this.roomMapper.selectRoom(roomId);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        int userId = this.userMapper.getUser(authentication.getName()).getUserId();
         String money = "$" + room.getMoney();
+        model.addAttribute("userId", userId);
         model.addAttribute("roomId", roomId);
         model.addAttribute("chatId", roomId);
         model.addAttribute("roomIdAgain", roomId);
