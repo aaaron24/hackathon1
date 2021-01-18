@@ -124,9 +124,10 @@ public class RoomController {
             System.out.println("Room Could Not Be Found");
             return "home";
         }
+        model.addAttribute("roomId", roomId);
         Room room = this.roomMapper.selectRoom(roomId);
         model.addAttribute("roomName", room.getRoomName());
-        return "newRoom";
+        return "room";
     }
 
 }

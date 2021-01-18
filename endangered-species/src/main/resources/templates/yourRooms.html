@@ -74,7 +74,9 @@
     </thead>	
     <tbody>
     	<tr th:each="room: ${list}">
-    	<td th:text= "${room.roomName}"></td>
+
+    	<td > <a th:text= "${room.roomName}" th:href="@{'/room?roomId='+${room.id}}">  </a></td>
+
     	<td th:text= "${room.animal}"></td>
     	<td th:text= "${room.money}"></td>
     	<td><a type="button" th:href="@{'/delete-room?roomName='+${room.roomName}}" class = "btn btn-warning">Delete</a></td>

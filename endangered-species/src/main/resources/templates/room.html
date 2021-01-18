@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.17/webcomponents-lite.js"></script>
+    <script src="slim-js/Slim.nomodule.js"></script>
+    <script src="feedElement.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="posts.css">
+    <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
+    <style>
+      #search-results{
+        width: 200px;
+        background: white;
+        color: black;
+        border: 1px solid black;
+      }
+    </style>
+</head>
+<body>
+<!--<nav class="navbar navbar-inverse" style = "border-radius:0;">-->
+<!--    <div class="container-fluid rounded-0">-->
+<!--        <div class="navbar-header">-->
+<!--            <a class="navbar-brand" href="#">WebSiteName</a>-->
+<!--        </div>-->
+<!--        <ul class="nav navbar-nav">-->
+<!--            <li class="active"><a href="/home">Home</a></li>-->
+<!--            <li><a data-toggle="modal" data-target="#myModal">Create New Room</a></li>-->
+
+<!--            <li><a href="/your-rooms">Your Rooms</a></li>-->
+<!--        </ul>-->
+<!--        <div id="myModal" class="modal fade" role="dialog">-->
+<!--            <div class="modal-dialog">-->
+
+<!--                &lt;!&ndash; Modal content&ndash;&gt;-->
+<!--                <div class="modal-content">-->
+<!--                    <div class="modal-header">-->
+<!--                        <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+<!--                        <h4 class="modal-title">New Room</h4>-->
+<!--                    </div>-->
+<!--                    <div class="modal-body">-->
+<!--                        <form th:action = "@{/createRoom}" method = "POST" action="#">-->
+<!--                            <div class="form-group">-->
+
+<!--                                <input th:name = "roomName" type="text" placeholder="Enter Room Name" class = "form-control" >-->
+<!--                            </div>-->
+<!--                            <div class="form-group">-->
+
+<!--                                <input th:name = "animal" type="text" placeholder="Enter Endangered Species" class = "form-control" >-->
+<!--                            </div>-->
+<!--                            <button type="submit" class="btn btn-default">Submit</button>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                    <div class="modal-footer">-->
+<!--                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="navbar-form navbar-left" style = " position: absolute; right:0;" >-->
+<!--            <div class="form-group">-->
+<!--                <form th:action = "@{/search}" method = "POST">-->
+<!--                    <input th:name = "keyword" type="text" class="form-control" placeholder="Search">-->
+<!--                    <button type="submit" class="btn btn-default">Submit</button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--            <div th:each = "searchResult : ${searchResults}" id = "search-results">-->
+<!--                <a th:href = "@{'/room?roomId='+${searchResult.id}}"><span class="result" th:text = "${searchResult.roomName}"></span></a>-->
+<!--                <span> - </span>-->
+<!--                <span class="name" th:text = "${searchResult.roomCreator}"></span>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+<div class = "container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" style="font-size:15px; display:flex; justify-content:center; align-items:center;">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item" style="margin-right: 30px !important;">
+                    <a class="nav-link active" style="font-size:15px;" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+<!--                    <a style="font-size:15px;" class="nav-link" href="#">Link</a>-->
+<!--                    <a  style="font-size:15px;" class="nav-link" href="#" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
+<!--                        Launch demo modal-->
+<!--                    </a>-->
+                </li>
+                <li><a data-toggle="modal" data-target="#myModal">Create New Room</a></li>
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">New Room</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form th:action = "@{/createRoom}" method = "POST" action="#">
+                                    <div class="form-group">
+
+                                        <input th:name = "roomName" type="text" placeholder="Enter Room Name" class = "form-control" >
+                                    </div>
+                                    <div class="form-group">
+
+                                        <input th:name = "animal" type="text" placeholder="Enter Endangered Species" class = "form-control" >
+                                    </div>
+                                    <button type="submit" class="btn btn-default">Submit</button>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+
+    <form method = "put">
+
+
+    </form>
+</div>
+<button></button>
+<post-feed th:attr="data-roomid=${roomId}"></post-feed>
+<!-- <post-element data-title="Post 1" data-image="https://yt3.ggpht.com/-oV5jRl-r4GA/AAAAAAAAAAI/AAAAAAAAAAA/MW_e0iGl0wc/s900-c-k-no/photo.jpg" data-description="mothafucka"></post-element> -->
+</body>
+</html>
