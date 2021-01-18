@@ -112,6 +112,14 @@ public class RoomController {
         return "home";
     }
 
+    @RequestMapping(value = "/pledge", method = RequestMethod.POST)
+    public String pledge(Model model, @RequestParam int pledge, @RequestParam int roomIdAgain){
+        int money = roomMapper.selectRoomMoney(roomIdAgain);
+        pledge = pledge+money;
+        roomMapper.setMoney(pledge, roomIdAgain);
+        return "pledge";
+    }
+
     @GetMapping("/rooms")
     public String returnRooms(Model model){
         List<Room> list = this.roomMapper.selectRooms();
@@ -124,10 +132,13 @@ public class RoomController {
             System.out.println("Room Could Not Be Found");
             return "home";
         }
-        model.addAttribute("roomId", roomId);
         Room room = this.roomMapper.selectRoom(roomId);
+        String money = "$" + room.getMoney();
+        model.addAttribute("roomId", roomId);
         model.addAttribute("chatId", roomId);
+        model.addAttribute("roomIdAgain", roomId);
         model.addAttribute("roomName", room.getRoomName());
+        model.addAttribute("roomMoney", money);
         return "room";
     }
 

@@ -27,6 +27,12 @@ public interface RoomMapper {
     @Select("SELECT * FROM ROOMS WHERE id = #{id}")
     Room selectRoom(int id);
 
+    @Select("SELECT money FROM ROOMS WHERE id = #{id}")
+    int selectRoomMoney(int id);
+
+    @Update("UPDATE ROOMS SET money = #{money} WHERE id = #{id}")
+    void setMoney(int money, int id);
+
     @Select("SELECT * FROM ROOMS WHERE roomName = #{roomName}")
     Room selectRoomByName(String roomName);
 

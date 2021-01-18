@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="posts.css">
     <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
     <style>
+    #dontShowThis{
+        display:none;
+    }
       #search-results{
         width: 200px;
         background: white;
@@ -83,7 +86,8 @@
 <div class = "container">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#" style="font-size:15px; display:flex; justify-content:center; align-items:center;">Endangered Species</a>
+        <a class="navbar-brand" href="#" style="font-size:15px; display:flex; justify-content:center; align-items:center;" th:text = "${roomName}"></a>
+        <a class="navbar-brand" href="#" style="font-size:15px; display:flex; justify-content:center; align-items:center;" th:text = "${roomMoney}"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -107,6 +111,11 @@
 
 
             </ul>
+            <form class="d-flex" method = "POST" th:action = "@{/pledge}">
+                <input id = "dontShowThis" class="form-control me-2" th:name = "roomIdAgain" th:value="${roomIdAgain}" placeholder="Pledge Money">
+                <input class="form-control me-2" type = "number" th:name = "pledge" placeholder="Pledge Money">
+                <button class="btn btn-outline-success" style="margin-right: 20px;" type="submit">Pledge</button>
+            </form>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
