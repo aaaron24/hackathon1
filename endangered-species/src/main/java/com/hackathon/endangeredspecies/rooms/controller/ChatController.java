@@ -36,6 +36,7 @@ public class ChatController {
             System.out.println("Room Could Not Be Found");
             return "home";
         }
+        System.out.println(22);
         Room room = this.roomMapper.selectRoom(roomId);
         model.addAttribute("roomName", room.getRoomName());
         model.addAttribute("chatMessages", this.messageService.getMessages());
