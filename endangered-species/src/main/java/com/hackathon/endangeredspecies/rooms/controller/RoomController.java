@@ -125,6 +125,7 @@ public class RoomController {
             return "home";
         }
         Room room = this.roomMapper.selectRoom(roomId);
+        model.addAttribute("chatId", roomId);
         model.addAttribute("roomName", room.getRoomName());
         return "newRoom";
     }
